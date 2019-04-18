@@ -10,6 +10,10 @@ import ItemDetails, { Record } from "../ItemDetails";
 import SwapiService from "../../services/SwapiService";
 import ErrorBoundry from "../ErrorBoundry";
 import Row  from '../Row';
+import DummySwapiService from '../../services/DummySwapiService';
+
+import { SwapiServiceProvider } from '../SwapiServiceContext';
+
 import {
     PersonList,
     PlanetList,
@@ -51,6 +55,7 @@ export default class App extends Component {
 
         return (
             <ErrorBoundry>
+                <SwapiServiceProvider value={ this.swapiService }>
                 <div className="main-wrapper-app">
                     <Header />
                     {/*{ planet }*/}
@@ -88,6 +93,7 @@ export default class App extends Component {
                     {/*    </div>*/}
                     {/*</div>*/}
                 </div>
+                </SwapiServiceProvider>
             </ErrorBoundry>
         );
     }

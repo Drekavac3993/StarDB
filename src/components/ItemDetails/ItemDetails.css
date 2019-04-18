@@ -18,6 +18,10 @@
     margin-right: .5rem;
 }
 
+.card {
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 768px ) {
     .item-details{
         margin-top: 1rem;

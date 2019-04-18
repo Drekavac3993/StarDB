@@ -5,3 +5,7 @@
 .item-list .list-group-item:hover {
     background-color: #444;
 }
+
+.list-group {
+    margin-bottom: 20px;
+}

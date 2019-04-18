@@ -6,8 +6,19 @@ import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
 import './App.css';
 import ItemList from "../ItemList";
-import PersonDetails from "../PersonDetails";
+import ItemDetails, { Record } from "../ItemDetails";
 import SwapiService from "../../services/SwapiService";
+import ErrorBoundry from "../ErrorBoundry";
+import Row  from '../Row';
+import {
+    PersonList,
+    PlanetList,
+    StarshipList,
+    PersonDetails,
+    PlanetDetails,
+    StarshipDetails
+} from '../SW-Components';
+
 
 export default class App extends Component {
 
@@ -39,38 +50,45 @@ export default class App extends Component {
         const planet = this.state.showRandomPlanet ? <RandomPlanet/> : null;
 
         return (
-            <div className="main-wrapper-app">
-                <Header />
-                { planet }
-                <button className="toggle-planet btn btn-warning btn-lg"
-                        onClick={this.toggleRandomPlanet}>
-                    Toggle Random Planet
-                </button>
-                <ErrorButton/>
-                <PeoplePage />
-                {/*<div className="row mb2">*/}
-                {/*    <div className="col-md-6">*/}
-                {/*        <ItemList onItemSelected={this.onPersonSelected}*/}
-                {/*                  getData={this.swapiService.getAllPlanets}*/}
-                {/*                  renderItem={(item) => item.name}/>*/}
-                {/*    </div>*/}
-                {/*    <div className="col-md-6">*/}
-                {/*        <PersonDetails personId={this.state.selectedPerson}/>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+            <ErrorBoundry>
+                <div className="main-wrapper-app">
+                    <Header />
+                    {/*{ planet }*/}
+                    {/*<button className="toggle-planet btn btn-warning btn-lg"*/}
+                    {/*        onClick={this.toggleRandomPlanet}>*/}
+                    {/*    Toggle Random Planet*/}
+                    {/*</button>*/}
+                    {/*<ErrorButton/>*/}
+                    {/*<Row left={ personDetails } right={ starshipDetails }/>*/}
+                    {/*<PeoplePage />*/}
 
-                {/*<div className="row mb2">*/}
-                {/*    <div className="col-md-6">*/}
-                {/*        <ItemList onItemSelected={this.onPersonSelected}*/}
-                {/*                  getData={this.swapiService.getAllStarships}*/}
-                {/*                  renderItem={(item) => (<span>{ item.name }<button>!</button></span>)}/>*/}
-                {/*    </div>*/}
-                {/*    <div className="col-md-6">*/}
-                {/*        <PersonDetails personId={this.state.selectedPerson}/>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-            </div>
+                    <PersonDetails itemId={11}/>
 
+                    <PlanetDetails itemId={5}/>
+
+                    <StarshipDetails itemId={9}/>
+
+                    <PersonList />
+
+                    <PlanetList />
+
+                    <StarshipList />
+
+
+
+
+                    {/*<div className="row mb2">*/}
+                    {/*    <div className="col-md-6">*/}
+                    {/*        <ItemList onItemSelected={this.onPersonSelected}*/}
+                    {/*                  getData={this.swapiService.getAllStarships}*/}
+                    {/*                  renderLabel={(item) => (<span>{ item.name }<button>!</button></span>)}/>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="col-md-6">*/}
+                    {/*        <ItemDetails itemId={this.state.selectedPerson}/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                </div>
+            </ErrorBoundry>
         );
     }
 }

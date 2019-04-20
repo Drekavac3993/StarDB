@@ -34,18 +34,15 @@ const mapStarshipMethodsToProps = (swapiService) => {
 };
 
 const PersonList = WithSwapiService(
-                        WithData(
-                            withChildFunction(ItemList, renderName)),
+                        WithData(withChildFunction(ItemList, renderName)),
                     mapPersonMethodsToProps);
 
 const PlanetList = WithSwapiService(
-                        WithData(
-                            withChildFunction(ItemList, renderName)),
+                        WithData(withChildFunction(ItemList, renderName)),
                     mapPlanetMethodsToProps);
 
 const StarshipList = WithSwapiService(
-                        WithData(
-                            withChildFunction(ItemList, renderModelAndName)),
+                        WithData(withChildFunction(ItemList, renderModelAndName)),
                     mapStarshipMethodsToProps);
 
 export {
